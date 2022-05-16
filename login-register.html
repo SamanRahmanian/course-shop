@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Login or Register</title>
+</head>
+<body>
+    <div class="row align-items-center align-content-center" id="LoginRegister">
+        <form action="" class="bg-white p-3 col-xl-3 col-lg-5 col-md-6 col-sm-10 mx-auto login" id="form">
+            <div>
+                <ul class="nav bg-white rounded-top">
+                  <li class="nav-item">
+                    <a class="nav-link act" href="#" id="Login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#" id="Register">Register</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="h-100" id="loginForm">
+                <div class="alert alert-danger p-2 my-3 border-0 rounded-0 shadow-sm" role="alert">
+                  A simple danger alert—check it out!
+                </div>
+                <h2 class="text-center fw-normal mb-4 mt-3">Login Form</h2>
+                <div class="mb-1">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control rounded-0" id="email" placeholder="name@example.com">
+                </div> 
+                <div class="mb-3">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control rounded-0" id="Password" placeholder="Password">
+                    <a href="" class="text-decoration-none">Forgot Password?</a>
+                </div>
+                <a href="" class="btn w-100 rounded-0 border-0 mt-3" id="sub-l">Login</a>
+              </div>
+              <form action="">
+                <div class="d-none h-100" id="registerForm">
+                  <div class="alert alert-danger p-2 my-3 border-0 rounded-0 shadow-sm" role="alert">
+                    A simple danger alert—check it out!
+                  </div>
+                  <h2 class="text-center fw-normal mb-4 mt-3">Register Form</h2>
+                  <div class="mb-1">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control rounded-0" id="emailR" placeholder="name@example.com">
+                  </div> 
+                  <div class="mb-1">
+                    <label for="Username" class="form-label">Username</label>
+                    <input type="text" class="form-control rounded-0" id="Username" placeholder="name@example.com">
+                  </div> 
+                  <div class="mb-3">
+                      <label for="Password" class="form-label">Password</label>
+                      <input type="password" class="form-control rounded-0" id="PasswordR" placeholder="Password">
+                  </div>
+                  <div class="mb-3">
+                    <label for="Password" class="form-label">Confirm password</label>
+                    <input type="password" class="form-control rounded-0" id="PasswordCR" placeholder="Password">
+                </div>
+                  <a href="" class="btn w-100 rounded-0 border-0 mt-3" id="sub-R">Register</a>
+                </div>
+              </form>
+        </form>
+    </div>
+    <script>
+      document.querySelector("#Login").addEventListener("click",shoWLoginForm)
+      document.querySelector("#Register").addEventListener("click",shoWRegisterForm)
+      document.querySelector("#sub-l").addEventListener("click" , validateLoginForm);
+      document.querySelector("#sub-R").addEventListener("click" , validateRegisterForm);
+
+      function shoWLoginForm(e){
+        e.preventDefault()
+        document.getElementById("loginForm").classList.remove("d-none")
+        document.getElementById("registerForm").classList.add("d-none")
+        document.getElementById("Login").classList.add("act")
+        document.getElementById("Register").classList.remove("act")
+      }
+      
+      function shoWRegisterForm(e){
+        document.getElementById("loginForm").classList.add("d-none")
+        document.getElementById("registerForm").classList.remove("d-none")
+        document.getElementById("Login").classList.remove("act")
+        document.getElementById("Register").classList.add("act")
+      }
+
+      function validateLoginForm(e){
+      e.preventDefault()
+      //validate password
+      if (document.querySelector("#Password").value.length < 5) {
+          document.querySelector("#Password").classList.add("is-invalid")
+      } else {
+          document.querySelector("#Password").classList.remove("is-invalid")
+          document.querySelector("#Password").classList.add("is-valid")
+      }
+      //validate email
+      if (document.querySelector("#email").value === "" || document.querySelector("#email").value.indexOf("@") < 0 || document.querySelector("#email").value.indexOf(".") < 0) {
+          document.querySelector("#email").classList.add("is-invalid")
+      } else {
+          document.querySelector("#email").classList.remove("is-invalid")
+          document.querySelector("#email").classList.add("is-valid")
+      }
+    }
+
+    function validateRegisterForm(e){
+      e.preventDefault()
+      //validate password
+      if (document.querySelector("#PasswordR").value.length < 5) {
+          document.querySelector("#PasswordR").classList.add("is-invalid")
+      } else {
+          document.querySelector("#PasswordR").classList.remove("is-invalid")
+          document.querySelector("#PasswordR").classList.add("is-valid")
+      }
+      //validate password
+      if (document.querySelector("#PasswordCR").value.length < 5) {
+          document.querySelector("#PasswordCR").classList.add("is-invalid")
+      } else {
+          document.querySelector("#PasswordCR").classList.remove("is-invalid")
+          document.querySelector("#PasswordCR").classList.add("is-valid")
+      }
+      //validate password
+      if (document.querySelector("#Username").value.length < 6) {
+          document.querySelector("#Username").classList.add("is-invalid")
+      } else {
+          document.querySelector("#Username").classList.remove("is-invalid")
+          document.querySelector("#Username").classList.add("is-valid")
+      }
+      //validate email
+      if (document.querySelector("#emailR").value === "" || document.querySelector("#emailR").value.indexOf("@") < 0 || document.querySelector("#emailR").value.indexOf(".") < 0) {
+          document.querySelector("#emailR").classList.add("is-invalid")
+      } else {
+          document.querySelector("#emailR").classList.remove("is-invalid")
+          document.querySelector("#emailR").classList.add("is-valid")
+      }
+    }
+    </script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
